@@ -42,9 +42,9 @@ The pad comes with an Arduino based demo that shows the full range of RGB capabi
 
 Replacing the initial demo and getting functional code on the macropad takes a few steps.
 
-1. Download the latest stable version[^4] of CircuitPython for the macropad: https://circuitpython.org/board/adafruit_macropad_rp2040/
-    - You should get a UF2[^5] file, a firmware bundle for the microcontroller
-2. Download the CircuitPython library bundle that matches the version of the CircuitPython firmware you downloaded in the previous step: https://circuitpython.org/libraries [^6]
+1. Download the latest stable version[^5] of CircuitPython for the macropad: https://circuitpython.org/board/adafruit_macropad_rp2040/
+    - You should get a UF2[^6] file, a firmware bundle for the microcontroller
+2. Download the CircuitPython library bundle that matches the version of the CircuitPython firmware you downloaded in the previous step: https://circuitpython.org/libraries [^7]
 3. Clone or download the code from this repository.
 4. Put the macropad in "bootloader mode" by plugging it in while holding down the rotary encoder switch (releasing after plugging in), or by holding the reset button on the side along with the rotary encoder, then releasing the reset button and rotary encoder switch in turn.
     - This will prepare the microcontroller to receive new software.
@@ -52,7 +52,7 @@ Replacing the initial demo and getting functional code on the macropad takes a f
 5. Drag and drop the UF2 file from step 1 into the "RPI-RP2" drive. It will take a few seconds and the pad will reboot into the new firmware.
 6. If all went well...
     - the "RPI-RP2" drive will be replaced with a drive named "CIRCUITPY"
-    - the macropad display will show a picture of a snake[^7] and the words "Hello World!\n\nCode Done Running."
+    - the macropad display will show a picture of a snake[^8] and the words "Hello World!\n\nCode Done Running."
     
 ![](https://user-images.githubusercontent.com/488418/180620410-814385e7-e1d3-4115-998b-c69607bec525.mp4)
 
@@ -97,7 +97,7 @@ Start making changes to code.py and the contents of the macros. Customize it and
 [^2]: Typically 6.5-7°
 [^3]: Never search "silicone feet" on Amazon
 [^4]: It does put the cable right in the way, but you could always run a flat USB-C connector up through the underside of the pad.
-[^4]: v7.3.2 at the time of writing
-[^5]: https://makecode.com/blog/one-chip-to-flash-them-all
-[^6]: v7.X at the time of writing
-[^7]: representing Blinka, the CircuitPython mascot
+[^5]: v7.3.2 at the time of writing
+[^6]: https://makecode.com/blog/one-chip-to-flash-them-all
+[^7]: v7.X at the time of writing
+[^8]: representing Blinka, the CircuitPython mascot
