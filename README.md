@@ -98,6 +98,6 @@ Start making changes to code.py and the contents of the macros. Customize it and
 [^3]: Never search "silicone feet" on Amazon
 [^4]: It does put the cable right in the way, but you could always run a flat USB-C connector up through the underside of the pad.
 [^5]: v7.3.2 at the time of writing
-[^6]: https://makecode.com/blog/one-chip-to-flash-them-all
+[^6]: [UF2 Technical Spec](https://github.com/microsoft/uf2)
 [^7]: v7.X at the time of writing
 [^8]: representing Blinka, the CircuitPython mascot
