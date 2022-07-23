@@ -37,16 +37,17 @@ class App:
         self.macros = appdata['macros']
 
     def switch(self):
-        # Activate application settings; update OLED labels and LED colors.
+        """ Activate application settings; update OLED labels and LED
+            colors. """
         group[13].text = self.name   # Application name
 
-        # If application name is not empty...
-        if self.name != '':
+        # If macropad is sleepy...
+        if self.name == '[[Zzzzz]]':
+            # ...disable the OLED display.
+            macropad.display.bus.send(int(0xAE), "")
+        else:
             # ...enable the OLED display.
             macropad.display.bus.send(int(0xAF), "")
-        else:
-            # ...disable the OLED display. Save power. Sleep circuits.
-            macropad.display.bus.send(int(0xAE), "")
 
         for i in range(12):
             if i < len(self.macros): # Key in use, set label + LED color
@@ -56,7 +57,7 @@ class App:
                 macropad.pixels[i] = 0
                 group[i].text = ''
 
-        macropad.display.brightness = 0.1   # Dim OLED display by default
+        macropad.display.brightness = 0.1   # Dim display
         macropad.keyboard.release_all()
         macropad.consumer_control.release()
         macropad.mouse.release_all()
@@ -70,6 +71,11 @@ class App:
 macropad = MacroPad()
 macropad.display.auto_refresh = False
 macropad.pixels.auto_write = False
+
+# Keep awake mouse jiggler
+jiggleDelay = 60000 # milliseconds
+jiggleDistance = 1 # pixels
+jiggleTime = ticks_ms() + jiggleDelay # Time to first jiggle
 
 # Set up displayio group with all the labels
 group = displayio.Group()
@@ -113,20 +119,21 @@ last_encoder_switch = macropad.encoder_switch_debounced.pressed
 app_index = 0
 apps[app_index].switch()
 
-# Keep awake mouse jiggler
-jiggle = True
-jiggleDelay = 60000
-jiggleTime = ticks_ms() + jiggleDelay
-
 # MAIN LOOP ----------------------------
 
 while True:
 
+    # If macropad is in sleep mode...
+    if apps[app_index].name == '[[Zzzzz]]':
+        jiggle = False
+    else:
+        jiggle = True
+
     # Jiggle mouse once a minute to keep computer awake
     if jiggle:
         if not ticks_less(ticks_ms(), jiggleTime):
-            macropad.mouse.move(1, 0, 0)
-            macropad.mouse.move(-1, 0, 0)
+            macropad.mouse.move(jiggleDistance, 0, 0)
+            macropad.mouse.move(-jiggleDistance, 0, 0)
             jiggleTime = ticks_ms() + jiggleDelay
 
     # Read encoder position. If it's changed, switch apps.

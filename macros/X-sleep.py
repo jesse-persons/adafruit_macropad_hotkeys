@@ -1,8 +1,7 @@
-# Disables the screen and buttons
+# Disables the screen, buttons, and jiggler
 from adafruit_hid.keycode import Keycode
 
 app = {
-    'name' : '',
+    'name' : '[[Zzzzz]]',
     'macros' : []
 }
-
