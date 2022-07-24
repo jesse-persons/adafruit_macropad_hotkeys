@@ -1,19 +1,20 @@
-# Microsoft Teams - Mac Desktop App
+# Media controls
 from adafruit_hid.keycode import Keycode
 from adafruit_hid.consumer_control_code import ConsumerControlCode
 
 app = {
-    'name' : 'Teams',
+    'name' : 'Media Keys',
+    'order' : 1,
     'macros' : [
         # 1st row
-        (0x540908, 'Audio', [Keycode.COMMAND, Keycode.SHIFT, Keycode.M]),
-        (0x000754, 'Chat',  [Keycode.COMMAND, 2]),
-        (0x04541B, 'Video', [Keycode.COMMAND, Keycode.SHIFT, Keycode.O]),    
+        (0x666666, '<<', [ConsumerControlCode.REWIND]),
+        (0xFFFFFF, 'Play',  [ConsumerControlCode.PLAY_PAUSE]),
+        (0x666666, '>>', [ConsumerControlCode.FAST_FORWARD]),
 
         # 2nd row
-        (0x002000, 'Share', [Keycode.COMMAND, Keycode.SHIFT, Keycode.E]),
-        (0x000000, '', []),
-        (0x000754, 'Leave', [Keycode.COMMAND, Keycode.SHIFT, Keycode.H]),
+        (0x663300, '<', [Keycode.COMMAND, Keycode.SHIFT, Keycode.E]),
+        (0x111111, 'Stop', []),
+        (0x663300, '>', [Keycode.COMMAND, Keycode.SHIFT, Keycode.H]),
 
         # 3rd row
         (0x000000, '', []),
