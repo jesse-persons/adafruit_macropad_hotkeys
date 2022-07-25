@@ -84,6 +84,26 @@ Replacing the initial demo and getting functional code on the macropad takes a f
 
 Start making changes to code.py and the contents of the macros. Customize it and make it yours. Share the changes you make with the group, but don't wait until you're proud. We're all learning together. Look at things that other people have done. Steal it and use it to make your macropad better!
 
+## boot.py tweak
+
+When you're satisfied with the state of your pad, you'll probably want to keep the CIRCUITPY drive from mounting every time you connect the pad. This code will prevent the drive from being mounted unless you press and hold the rotary encoder shortly after a hard reset (or when applying power). If the encoder is held down while the neopixel under the first key is flashing, the drive will mount. Somewhat more convenient than having it always disabled and struggling to get the board into safe mode.
+
+```python
+import board
+import digitalio
+import storage
+
+# Mount the CIRCUITPY drive if the encoder switch is held down
+encoder_switch = digitalio.DigitalInOut(board.BUTTON)
+encoder_switch.switch_to_input(pull=digitalio.Pull.UP)
+if(encoder_switch.value):
+    print("NOT Mounting CIRCUITPY")
+    storage.disable_usb_drive()
+else:
+    print("Mounting CIRCUITPY")
+```
+
+
 ## Features
 
 ### Achieved :tada:
