@@ -10,6 +10,11 @@ The code in this repo is based on the work of [Phillip Burgess](https://github.c
 - [Download code from article directly](https://learn.adafruit.com/pages/22617/elements/3099360/download?type=zip)
 - [GitHub repo with code from the article ](https://github.com/adafruit/Adafruit_Learning_System_Guides/tree/main/Macropad_Hotkeys)
 
+Others:
+- [deckerego/Macropad_Hotkeys](https://github.com/deckerego/Macropad_Hotkeys)
+    - Much improved organization and modularity
+    - I stole the app "order" code from here
+
 ## Assembly
 
 1. Clear a little time in your schedule.
